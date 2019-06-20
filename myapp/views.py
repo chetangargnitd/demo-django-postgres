@@ -10,7 +10,7 @@ def index(request):
 	posts = Post.objects.all()
 	for i in posts:
 		diff = int((datetime.now(timezone.utc) - (i.created)).days)
-		if diff==1:
+		if diff<=1:
 			i.latest = True
 	context = Post.objects.order_by('-created')[:5]
 
